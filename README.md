@@ -1,16 +1,16 @@
 # crudEasy
-Easily creates CRUD operations through browseable HTML routes and RESTful API json routes, in Node.js with ExpressJS and MongoDB
+Easily creates CRUD operations through browseable HTML routes and RESTful API json routes, in Node.js with ExpressJS and MongoDB.
 
-_Requires Node.js, MongoDB and Express_
+* Requires `Node.js`, `MongoDB` and `Express`
 
-# Installation instructions
-1. download repository
-2. rename _config-template.js_ to _config.js_ and change accordingly, to setup your MongoDB user, password, collection and URL, and to insert your OAuth keys (such as Facebook, Twitter, Google+ and LinkedIn)
-3. go to the directory _crudEasy_ and run _npm install_
-4. require crudEasy with the options set forth below.
+## Installation instructions
+1. download repository or import with `npm install crudeasy` (note: npm modules are *lowercase*);
+2. rename _config-template.js_ to _config.js_ and change accordingly, to setup your MongoDB user, password, and URL;
+3. go to the directory _crudEasy_ and run _npm install_ (if not done already);
+4. require crudEasy with the options set forth below;
 5. Do so for as many routes and collections as needed!
 
-## v. 0.1
+### v. 0.1.0
 - First version. just basic CRUD oeprations and full views and RESTful API functions
 
 ## Documentation
@@ -23,6 +23,18 @@ _Requires Node.js, MongoDB and Express_
 
 ### Basic initialization
 
+First instantiate a new model by calling `var modelInstance = new crudEasy.newModel(url, collectionName);` and then use the api and crud routes by calling ` app.use([route], crudEasy.crudRoute(modelInstance, optionsObject));`  and `app.use([/api/route],crudEasy.apiRoute(modelInstance, optionsObject));`
+
+```javascript
+crudEasy = {
+    newModel:   function(url, collectionName){return require('lib/_objectMongodb')(url, collectionName);},
+    crudRoute:  function(url, collectionName){return require('lib/crud')();}
+}
+```
+
+### Options
+
+```javascript
 :modelModule
 options = {
     collection:     "processos",
@@ -36,14 +48,6 @@ options = {
     viewItem:       "processos/view.jade",
     viewList:       "processos/list.jade",
     viewEdit:       "processos/form.jade",
-}
-
-First instantiate a new model by calling `var modelInstance = new crudEasy.newModel(url, collectionName);` and then use the api and crud routes by calling ` app.use([route], crudEasy.crudRoute(modelInstance, optionsObject));`  and `app.use([/api/route],crudEasy.apiRoute(modelInstance, optionsObject));`
-
-```javascript
-crudEasy = {
-    newModel:   function(url, collectionName){return require('lib/_objectMongodb')(url, collectionName);},
-    crudRoute:  function(url, collectionName){return require('lib/crud')();}
 }
 ```
 
