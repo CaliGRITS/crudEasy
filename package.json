@@ -1,0 +1,19 @@
+{
+  "name": "crudeasy",
+  "version": "0.1.0",
+  "description": "Easily creates CRUD operations through browseable HTML routes and RESTful API json routes, in Node.js with ExpressJS and MongoDB",
+  "main": "export.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RenatoXSR/crudEasy.git"
+  },
+  "author": "Renato Xavier da Silveira Rosa, from São Paulo, Brazil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RenatoXSR/crudEasy/issues"
+  },
+  "homepage": "https://github.com/RenatoXSR/crudEasy#readme"
+}
