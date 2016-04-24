@@ -6,6 +6,8 @@
 config.js
 .mongorc.js
 
+# test file with passwords and stuff
+/tests/tests-local.js
 
 
 #########

@@ -1,8 +1,7 @@
 /*
- * /lib/_crud.js
+ * /crud.js
  *
  */
-
 
 'use strict';
 
@@ -11,10 +10,11 @@ var bodyParser = require('body-parser');
 
 if (!options) {
 	var options = {
-		"defaultPerPage": 10;
+		"defaultPerPage": 10
 	};
+};
 
-module.exports = function (model, options) {
+module.exports = function newModel(model, options) {
 
 	var router = express.Router();
 
@@ -62,7 +62,7 @@ module.exports = function (model, options) {
 
   router.get(options.routeNew, function addForm(req, res) {
     res.render(options.viewNew, {
-      processo: {},
+      item: {},
       action: options.labelNew
     });
   });
@@ -83,7 +83,7 @@ module.exports = function (model, options) {
   });
 
   /**
-   * GET /:modelModule/:id/editar
+   * GET /:modelModule/:id/edit
    *
    *  Shows an object to be edited.
    */
@@ -102,7 +102,7 @@ module.exports = function (model, options) {
    *
    *  Updates an object.
    */
-  router.post('/:item/editar', function update(req, res, next) {
+  router.post(options.routeEdit, function update(req, res, next) {
     var data = req.body;
 
     model.update(req.params.item, data, function (err, savedData) {
@@ -116,11 +116,11 @@ module.exports = function (model, options) {
    *
    *  Shows an object.
    */
-  router.get('/:processo', function get(req, res, next) {
-    model.read(req.params.processo, function (err, entity) {
+  router.get('/:item', function get(req, res, next) {
+    model.read(req.params.item, function (err, entity) {
       if (err) { return next(err); }
-****      res.render(options.viewObject, {
-        processo: entity
+      res.render(options.viewItem, {
+        item: entity
       });
     });
   });
@@ -149,3 +149,5 @@ module.exports = function (model, options) {
 
   return router;
 };
+
+

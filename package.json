@@ -4,7 +4,7 @@
   "description": "Easily creates CRUD operations through browseable HTML routes and RESTful API json routes, in Node.js with ExpressJS and MongoDB",
   "main": "export.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./tests/tests-local.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/RenatoXSR/crudEasy#readme",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "^4.13.4",
-    "mongodb": "^2.1.16"
+    "mongodb": "^2.1.16",
+    "pug": "^2.0.0-alpha6"
   }
 }

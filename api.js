@@ -11,8 +11,9 @@ var bodyParser = require('body-parser');
 
 if (!options) {
 	var options = {
-		"defaultPerPage": 10;
+		"defaultPerPage": 10
 	};
+};
 
 module.exports = function (model, options) {
 
