@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/RenatoXSR/crudEasy/issues"
   },
-  "homepage": "https://github.com/RenatoXSR/crudEasy#readme"
+  "homepage": "https://github.com/RenatoXSR/crudEasy#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mongodb": "^2.1.16"
+  }
 }
