@@ -61,7 +61,8 @@ module.exports = function newModel(model, options) {
   router.get(options.routeNew, function addForm(req, res) {
     res.render(options.viewNew, {
       item: {},
-      action: options.labelNew
+      action: options.labelNew,
+      query: req.query
     });
   });
 
@@ -90,7 +91,8 @@ module.exports = function newModel(model, options) {
       if (err) { return next(err); }
       res.render(options.viewEdit, {
         item: entity,
-        action: options.labelEdit
+        action: options.labelEdit,
+        query: req.query
       });
     });
   });
@@ -118,7 +120,8 @@ module.exports = function newModel(model, options) {
     model.read(req.params.item, function (err, entity) {
       if (err) { return next(err); }
       res.render(options.viewItem, {
-        item: entity
+        item: entity,
+        query: req.query
       });
     });
   });
