@@ -16,10 +16,12 @@
     "url": "https://github.com/RenatoXSR/crudEasy/issues"
   },
   "homepage": "https://github.com/RenatoXSR/crudEasy#readme",
+  "devDependencies": {
+    "pug": "^2.0.0-alpha6"
+  },
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "mongodb": "^2.1.16",
-    "pug": "^2.0.0-alpha6"
   }
 }

@@ -45,7 +45,9 @@ module.exports = function newModel(model, options) {
         res.render(options.viewList, {
         items: entities,
         perPage: options.defaultPerPage,
-        nextPageToken: cursor
+        nextPageToken: cursor,
+		pageToken: req.query.pageToken,
+		query: req.query
       });
     });
   });
