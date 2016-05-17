@@ -22,6 +22,13 @@ module.exports = function (model, options) {
   // Automatically parse request body as JSON
   router.use(bodyParser.json());
 
+	if (options.middle!=null) {
+		for (var m=0;m<options.middle.length;m++){
+			router.use(options.middle[m]);
+		};
+	};
+
+
   /**
    * GET /api/:modelModule/
    *
