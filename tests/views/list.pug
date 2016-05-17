@@ -25,3 +25,8 @@ block content
 								a(href="/#{item.id}") #{item.number}
 							td
 								a(href="/#{item.id}") #{item.color}
+	if nextPageToken
+		nav
+			ul.pager
+				li
+					a(href="?pageToken=#{encodeURIComponent(nextPageToken)}", class="btn btn-primary btn-sm") More

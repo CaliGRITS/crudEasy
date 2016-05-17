@@ -1,4 +1,7 @@
 # crudEasy
+[![Dependency Status](https://david-dm.org/RenatoXSR/crudEasy.svg)](https://david-dm.org/RenatoXSR/crudEasy)
+[![NPM version](https://img.shields.io/npm/v/crudEasy.svg?style=flat)](https://www.npmjs.com/package/crudeasy)
+
 Easily creates CRUD operations through browseable HTML routes and RESTful API json routes, in Node.js with ExpressJS and MongoDB.
 
 * Requires `Node.js`, `MongoDB` and `ExpressJS`

@@ -27,17 +27,13 @@ module.exports = function newModel(model, options) {
 		next();
 	});
   
-/*	router.use(function isLoggedIn(req, res, next) {
+	if (options.middle!=null) {
+		for (var m=0;m<options.middle.length;m++){
+			router.use(options.middle[m]);
+		};
+	};
 
-		// if user is authenticated in the session, carry on 
-		if (req.isAuthenticated())
-			return next();
 
-		// if they aren't redirect them to the home page
-		//res.render('login');
-		res.redirect('/?redir='+encodeURIComponent(req.baseUrl));
-	});
-*/
   /**
    * GET /:modelModule/
    *
@@ -98,7 +94,7 @@ module.exports = function newModel(model, options) {
   });
 
   /**
-   * POST /:modelModule/:id/editar
+   * POST /:modelModule/:id/edit
    *
    *  Updates an object.
    */

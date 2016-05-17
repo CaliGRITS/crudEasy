@@ -5,10 +5,10 @@ block content
     small
 
   .btn-group
-    a(href="/#{item.id}/edit", class='btn btn-primary btn-sm')
+    a(href='/#{item.id}/edit', class='btn btn-primary btn-sm')
       i.glyphicon.glyphicon-edit
       span  Edit item
-    a(href="/#{item.id}/delete", class='btn btn-danger btn-sm')
+    a(href='/#{item.id}/delete', class='btn btn-danger btn-sm')
       i.glyphicon.glyphicon-trash
       span  Delete item
   .media
@@ -16,8 +16,3 @@ block content
       h4= item.id
       h4= item.number
       h4= item.color
-  if nextPageToken
-    nav
-      ul.pager
-        li
-          a(href="?pageToken=#{encodeURIComponent(nextPageToken)}", class="btn btn-primary btn-sm") More
