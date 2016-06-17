@@ -40,7 +40,7 @@ module.exports = function newModel(model, options) {
    *  Shows a list of objects, X per time.
    */
   router.get('/', function list(req, res, next) {
-      model.list(options.defaultPerPage, req.query.pageToken, function (err, entities, cursor) {
+      model.list(perPage, req.query.pageToken, function (err, entities, cursor) {
       if (err) { return next(err); }
         res.render(options.viewList, {
         items: entities,
