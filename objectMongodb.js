@@ -73,9 +73,7 @@ module.exports = function newModel(url, collectionName) {
     }
     getCollection(function (err, collection) {
       if (err) { return cb(err); }
-      collection.distinct(field)
-        .sort() 
-        .toArray(function (err, results) {
+      collection.distinct(field, function (err, results) {
           if (err) { return cb(err); }
           cb(null, results.map(fromMongo));
         });
