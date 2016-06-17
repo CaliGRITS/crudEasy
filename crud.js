@@ -40,7 +40,7 @@ module.exports = function newModel(model, options) {
    *  Shows a list of objects, X per time.
    */
   router.get('/', function list(req, res, next) {
-      var pageLimit = req.query.perPage || options.defaultPerPage;
+      var pageLimit = parseInt(req.query.perPage || options.defaultPerPage);
       model.list(req.query, pageLimit, req.query.pageToken, function (err, entities, cursor) {
       if (err) { return next(err); }
         res.render(options.viewList, {
