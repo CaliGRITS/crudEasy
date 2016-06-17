@@ -100,7 +100,7 @@ module.exports = function (model, options) {
    * Retrieve a lista of options for filtering (ajax).
    */
   router.get(options.routeFilter, function listFilter(req, res, next) {
-      model.listFilter(req.param.field, pageLimit, req.query.pageToken, function (err, entities, cursor) {
+      model.listFilter(req.params.field, pageLimit, req.query.pageToken, function (err, entities, cursor) {
       if (err) { return next(err); }
       res.json({
         items: entities,
