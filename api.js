@@ -35,7 +35,8 @@ module.exports = function (model, options) {
    * Retrieve a page of objects (up to 'X' at a time).
    */
   router.get('/', function list(req, res, next) {
-    model.list(options.defaultPerPage, req.query.pageToken, function (err, entities, cursor) {
+      var pageLimit = parseInt(req.query.perPage || options.defaultPerPage);
+      model.list(req.query, pageLimit, req.query.pageToken, function (err, entities, cursor) {
       if (err) { return next(err); }
       res.json({
         items: entities,
@@ -89,6 +90,22 @@ module.exports = function (model, options) {
     model.delete(req.params.item, function (err) {
       if (err) { return next(err); }
       res.status(200).send('OK');
+    });
+  });
+
+
+  /**
+   * GET /api/:modelModule/:filterRoute/:field
+   *
+   * Retrieve a lista of options for filtering (ajax).
+   */
+  router.get(options.routeFilter, function listFilter(req, res, next) {
+      model.listFilter(req.param.field, pageLimit, req.query.pageToken, function (err, entities, cursor) {
+      if (err) { return next(err); }
+      res.json({
+        items: entities,
+        nextPageToken: cursor
+      });
     });
   });
 

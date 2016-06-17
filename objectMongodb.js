@@ -63,6 +63,26 @@ module.exports = function newModel(url, collectionName) {
   }
   // [END list]
 
+
+  // [START listFilter]
+  function listFilter(field, limit, token, cb) {
+    //token = token ? parseInt(token, 100) : 0;
+    token = 0; //every field
+    if (isNaN(token)) {
+      return cb(new Error('invalid token'));
+    }
+    getCollection(function (err, collection) {
+      if (err) { return cb(err); }
+      collection.distinct(field)
+        .sort(); 
+        .toArray(function (err, results) {
+          if (err) { return cb(err); }
+          cb(null, results.map(fromMongo));
+        });
+    });
+  }
+  // [END listFilter]
+
   // [START create]
   function create(data, cb) {
     getCollection(function (err, collection) {
