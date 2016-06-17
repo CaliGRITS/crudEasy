@@ -32,7 +32,8 @@ module.exports = function newModel(model, options) {
 			router.use(options.middle[m]);
 		};
 	};
-
+    
+  var pageLimit = req.query.perPage || options.defaultPerPage;
 
   /**
    * GET /:modelModule/
@@ -40,11 +41,11 @@ module.exports = function newModel(model, options) {
    *  Shows a list of objects, X per time.
    */
   router.get('/', function list(req, res, next) {
-      model.list(req.query, req.query.pageToken, function (err, entities, cursor) {
+      model.list(req.query, pageLimit, req.query.pageToken, function (err, entities, cursor) {
       if (err) { return next(err); }
         res.render(options.viewList, {
         items: entities,
-        perPage: req.query.perPage || options.defaultPerPage,
+        perPage: pageLimit, 
         nextPageToken: cursor,
 		pageToken: req.query.pageToken,
 		query: req.query

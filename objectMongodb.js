@@ -43,7 +43,7 @@ module.exports = function newModel(url, collectionName) {
   }
 
   // [START list]
-  function list(limit, token, cb) {
+  function list(qs, limit, token, cb) {
     token = token ? parseInt(token, 10) : 0;
     if (isNaN(token)) {
       return cb(new Error('invalid token'));
