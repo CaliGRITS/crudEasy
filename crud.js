@@ -44,7 +44,7 @@ module.exports = function newModel(model, options) {
       if (err) { return next(err); }
         res.render(options.viewList, {
         items: entities,
-        perPage: options.defaultPerPage,
+        perPage: req.query.perPage || options.defaultPerPage,
         nextPageToken: cursor,
 		pageToken: req.query.pageToken,
 		query: req.query
