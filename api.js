@@ -18,7 +18,7 @@ module.exports = function (model, options) {
 		    "defaultPerPage": 10
 	    };
     };
-    if (!options.routeFilter) {options.routeFilter = '/filter/:field'};
+    if (!options.routeFilter) {options.routeFilter = '/filter'};
     
     var router = express.Router();
 
@@ -103,7 +103,8 @@ module.exports = function (model, options) {
    * Retrieve a lista of options for filtering (ajax).
    */
 
-  router.get(options.routeFilter, function listFilter(req, res, next) {
+  router.get(options.routeFilter+'/:field', function listFilter(req, res, next) {
+      if (!req.params.field) {res.json({error:'Please append a field name to the request address.'})};
       model.listFilter(req.params.field, pageLimit, req.query.pageToken, function (err, entities, cursor) {
       if (err) { return next(err); }
       res.json({
