@@ -65,9 +65,9 @@ module.exports = function newModel(url, collectionName) {
 
 
   // [START listFilter]
-  function listFilter(field, limit, token, cb) {
+  /*function listFilter(field, limit, token, cb) {
     //token = token ? parseInt(token, 100) : 0;
-    token = 0; //every field
+    token = 0;
     if (isNaN(token)) {
       return cb(new Error('invalid token'));
     }
@@ -78,7 +78,7 @@ module.exports = function newModel(url, collectionName) {
           cb(null, results.map(fromMongo));
         });
     });
-  }
+  }*/
   // [END listFilter]
 
   // [START create]

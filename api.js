@@ -103,7 +103,7 @@ module.exports = function (model, options) {
    * Retrieve a lista of options for filtering (ajax).
    */
 
-  router.get(options.routeFilter+'/:field', function listFilter(req, res, next) {
+/*  router.get(options.routeFilter+'/:field', function listFilter(req, res, next) {
       if (!req.params.field) {res.json({error:'Please append a field name to the request address.'})};
       model.listFilter(req.params.field, pageLimit, req.query.pageToken, function (err, entities, cursor) {
       if (err) { return next(err); }
@@ -113,7 +113,7 @@ module.exports = function (model, options) {
       });
     });
   });
-
+*/
   /**
    * Errors on "/api/:modelModule/*" routes.
    */
