@@ -8,6 +8,8 @@
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 
+var oidRegExp = new RegExp("/^[a-fA-F0-9]{24}$/");
+
 module.exports = function newModel(url, collectionName) {
 
   var collection;
@@ -95,7 +97,8 @@ module.exports = function newModel(url, collectionName) {
   // [END create]
 
   function read(id, cb) {
-    getCollection(function (err, collection) {
+      if (!/^[a-fA-F0-9]{24}$/.test(id)) {return cb ({code: 404, message: 'Not valid ObjectId. Must be 24 hex string or 12 hex binary sequence.'})};
+      getCollection(function (err, collection) {
       if (err) { return cb(err); }
       collection.findOne({
         _id: new ObjectID(id)
