@@ -1,6 +1,6 @@
 {
   "name": "crudeasy",
-  "version": "0.2.14",
+  "version": "0.2.15",
   "description": "Easily creates CRUD operations through browseable HTML routes and RESTful API json routes, in Node.js with ExpressJS and MongoDB",
   "main": "export.js",
   "scripts": {
