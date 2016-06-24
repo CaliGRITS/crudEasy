@@ -8,17 +8,23 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-if (!options) {
-	var options = {
-		"defaultPerPage": 10
-	};
-};
-
 module.exports = function newModel(model, options) {
 
-	var router = express.Router();
 
-	// Automatically parse request body as form data
+    if (!options) {
+	    var options = {
+		    "defaultPerPage": 10
+	    };
+    };
+
+    if (!options.routeFilter) {options.routeFilter = '/filter/:field'};
+    if (!options.routeNew) {options.routeNew = '/new'};
+    if (!options.routeDelete) {options.routeDelete = '/:item/delete'};
+    if (!options.routeEdit) {options.routeEdit = '/:item/edit'};
+
+	var router = express.Router();
+	
+    // Automatically parse request body as form data
 	router.use(bodyParser.urlencoded({ extended: false }));
 
 	// Set Content-Type for all responses for these routes

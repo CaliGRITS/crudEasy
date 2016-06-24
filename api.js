@@ -9,15 +9,18 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-if (!options) {
-	var options = {
-		"defaultPerPage": 10
-	};
-};
+
 
 module.exports = function (model, options) {
 
-  var router = express.Router();
+    if (!options) {
+	    var options = {
+		    "defaultPerPage": 10
+	    };
+    };
+    if (!options.routeFilter) {options.routeFilter = '/filter/:field'};
+    
+    var router = express.Router();
 
   // Automatically parse request body as JSON
   router.use(bodyParser.json());
@@ -99,6 +102,7 @@ module.exports = function (model, options) {
    *
    * Retrieve a lista of options for filtering (ajax).
    */
+
   router.get(options.routeFilter, function listFilter(req, res, next) {
       model.listFilter(req.params.field, pageLimit, req.query.pageToken, function (err, entities, cursor) {
       if (err) { return next(err); }
