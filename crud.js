@@ -54,7 +54,8 @@ module.exports = function newModel(model, options) {
         perPage: pageLimit, 
         nextPageToken: cursor,
 		pageToken: req.query.pageToken,
-		query: req.query
+		query: req.query,
+		req: req
       });
     });
   });
@@ -69,7 +70,9 @@ module.exports = function newModel(model, options) {
     res.render(options.viewNew, {
       item: {},
       action: options.labelNew,
-      query: req.query
+      query: req.query,
+      req: req
+      });
     });
   });
 
@@ -99,7 +102,9 @@ module.exports = function newModel(model, options) {
       res.render(options.viewEdit, {
         item: entity,
         action: options.labelEdit,
-        query: req.query
+        query: req.query,
+ 	req: req
+      });
       });
     });
   });
@@ -128,7 +133,8 @@ module.exports = function newModel(model, options) {
       if (err) { return next(err); }
       res.render(options.viewItem, {
         item: entity,
-        query: req.query
+        query: req.query,
+	req: req
       });
     });
   });
