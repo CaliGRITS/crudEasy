@@ -39,11 +39,14 @@ module.exports = function (model, options) {
    */
   router.get('/', function list(req, res, next) {
       var pageLimit = parseInt(req.query.perPage || options.defaultPerPage);
-      model.list(req.query, pageLimit, req.query.pageToken, function (err, entities, cursor) {
+      model.list(req.query, pageLimit, req.query.pageToken, function (err, entities, cursor, total) {
       if (err) { return next(err); }
       res.json({
         items: entities,
-        nextPageToken: cursor
+        nextPageToken: cursor,
+	perPage:	pageLimit,
+	pageToken: req.query.pageToken,
+	total:	total,
       });
     });
   });
