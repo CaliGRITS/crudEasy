@@ -47,14 +47,15 @@ module.exports = function newModel(model, options) {
    */
   router.get('/', function list(req, res, next) {
       var pageLimit = parseInt(req.query.perPage || options.defaultPerPage);
-      model.list(req.query, pageLimit, req.query.pageToken, function (err, entities, cursor, total) {
+      model.list(req.query, pageLimit, req.query.pageToken, function (err, entities, cursor) {
+//      model.list(req.query, pageLimit, req.query.pageToken, function (err, entities, cursor, total) {
       if (err) { return next(err); }
         res.render(options.viewList, {
+        params: req.params,
         items: entities,
         perPage: pageLimit, 
         nextPageToken: cursor,
-	pageToken: req.query.pageToken,
-	total: total,
+	pageToken: req.query.pageToken
       });
     });
   });
@@ -68,8 +69,8 @@ module.exports = function newModel(model, options) {
   router.get(options.routeNew, function addForm(req, res) {
     res.render(options.viewNew, {
       item: {},
+      params: req.params,
       action: options.labelNew,
-      });
     });
   });
 
@@ -97,9 +98,9 @@ module.exports = function newModel(model, options) {
     model.read(req.params.item, function (err, entity) {
       if (err) { return next(err); }
       res.render(options.viewEdit, {
-        item: entity,
+          item: entity,
+	params: req.params,
         action: options.labelEdit,
-      });
       });
     });
   });
@@ -127,6 +128,7 @@ module.exports = function newModel(model, options) {
     model.read(req.params.item, function (err, entity) {
       if (err) { return next(err); }
       res.render(options.viewItem, {
+	params: req.params,
         item: entity,
       });
     });

@@ -59,7 +59,8 @@ module.exports = function newModel(url, collectionName) {
           if (err) { return cb(err); }
           var hasMore =
             results.length === limit ? token + results.length : false;
-          cb(null, results.map(fromMongo), hasMore, results.length);
+          cb(null, results.map(fromMongo), hasMore);
+          //cb(null, results.map(fromMongo), hasMore, results.length);
         });
     });
   }
