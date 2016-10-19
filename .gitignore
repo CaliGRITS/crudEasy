@@ -3,6 +3,7 @@
 ##
 ## see instructions in config-template.js
 ################
+*.swo
 config.js
 .mongorc.js
 
